@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML</title>
+    <script>
+		function box(pick) {
+			document.getElementById("hold").value = pick;
+			document.getElementById("myForm").submit();
+		}   
+    </script>
+</head>
+
+<body>
+	<form action="/food1/jsp" id="myForm"> 
+		<input type="hidden" id="hold" name="hold">
+		<input type="button" value="목록" onclick="box('list')" style="cursor:pointer;">
+		<input type="button" value="삭제" onclick="box('delete')" style="cursor:pointer;">
+	</form>
+</body>
+
+</html>

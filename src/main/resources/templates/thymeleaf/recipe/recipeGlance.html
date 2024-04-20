@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>RECIPE GLANCE</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<button>
+<div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<h2 style="color:blue;">검색된 레시피</h2>   
+<table border="1">
+
+<tr bgcolor="#CCFFCC" style="font-weight:bold;">
+	<td align="center" width="200px">제목</td>
+	<td align="center" width="400px">재료</td>
+</tr>
+
+<tr th:each="index:${#numbers.sequence(0, hugRecipeVideo.size()-1)}">
+	<td>
+		<a th:href="@{/recipe/searched(myRecipeVideo=${hugRecipeVideo[index]}, myRecipeName=${hugRecipeName[index]}, myRecipeStuff=${hugRecipeStuff[index]}, myRecipeCook=${hugRecipeCook[index]})}">
+			<span th:text="${hugRecipeName[index]}"></span>
+		</a>
+	</td>
+	<td th:text="${hugRecipeStuff[index]}"></td>
+</tr>
+</table>   
+   
+</body>
+</html>

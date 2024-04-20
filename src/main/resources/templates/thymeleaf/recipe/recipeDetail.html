@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>RECIPE DETAIL</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<button>
+<div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<!-- 자유게시판 -->
+<h2 style="color:blue;">자유게시판 상세</h2>
+
+<table border="1">
+
+	<!-- 자유게시판 부제 -->
+	<tr bgcolor="#CCFFCC">
+		<th>번호</th>
+		<th>아이디</th>
+		<th>비번</th>
+		<th>제목</th>
+		<th width="300px">내용</th>
+		<th width="100px">작성일</th>
+		<th>조회수</th>
+	</tr>
+	
+	<!-- 자유게시판 부제 내용(번호, 아이디, 비번, 제목, 내용, 작성일, 조회수)-->
+	<tr bgcolor="#F0F8FF">
+		<td th:text="${myNum}" align="right"></td>
+		<td th:text="${pickId}" align="center"></td>
+		<td align="center">****</td>
+		<td th:text="${myTitle}" align="center"></td>
+		<td th:text="${myContents}"></td>
+		<td th:text="${myRegDate}" align="center"></td>
+		<td th:text="${myHit}" align="right"></td>
+	</tr>
+	  
+</table><br>
+
+<a th:href="@{/recipe/choice(option='list')}">목록으로</a>
+<a th:href="@{/recipe/choice(option='update', myNum=${myNum}, pickId=${pickId}, myTitle=${myTitle}, myContents=${myContents})}">수정</a>
+<a th:href="@{/recipe/choice(option='delete', myNum=${myNum}, pickId=${pickId}, myTitle=${myTitle}, myContents=${myContents})}">삭제</a>
+
+</body>
+</html>

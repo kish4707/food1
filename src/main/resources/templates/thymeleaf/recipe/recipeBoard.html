@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>RECIPE BOARD</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<button>
+<div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<!-- 자유게시판 -->
+<h2 style="color:blue;">자유게시판</h2>
+<table border="1">
+
+	<!-- 자유게시판 부제 -->
+	<tr bgcolor="#CCFFCC">
+		<th>번호</th>
+		<th>아이디</th>
+		<th>비번</th>
+		<th>제목</th>
+		<th width="300px">내용</th>
+		<th width="100px">작성일</th>
+		<th>조회수</th>
+	</tr>
+	
+	<!-- 자유게시판 부제 내용(번호, 아이디, 비번, 제목, 내용, 작성일, 조회수)-->
+	<tr th:each="board:${board}" bgcolor="#F0F8FF">
+		<td th:text="${board.num}" align="right"></td>
+		<td th:text="${board.id}" align="center"></td>
+		<td align="center">****</td>
+		<td class="title" align="center">
+			<!-- <a href="/recipe/detail?myNum=" th:attrappend="href=${board.num}" th:text="${board.title}"></a> -->
+			<a th:href="'/recipe/detail?myNum='+${board.num}+'&pick1Id='+${board.id}" th:text="${board.title}"></a>
+		<td th:text="${board.contents}"></td>
+		<td th:text="${board.regDate}" align="center"></td>
+		<td th:text="${board.hit}" align="right"></td>
+	</tr>
+	
+</table><br>
+
+<!-- 자유게시판 글쓰기 -->
+<button	style="cursor:pointer" onclick="location.href='/recipe/write'">글쓰기</button>
+
+</body>
+</html>

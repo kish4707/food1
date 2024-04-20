@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>suggestMain</title>
+
+<!-- 배경이미지 -->
+<style>
+body { 
+background-image:url('/pic/main/bgSuggestion.png');
+background-size:auto;
+background-repeat:no-repeat;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 제목 -->
+<button><div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div></button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<!-- 상단 버튼들 -->
+<div style="text-align:left;">
+	<button style="cursor:pointer;" onclick="location.href='/suggest/board?option=orderHit'">조회수별</button>
+	<button style="cursor:pointer;" onclick="location.href='/suggest/board?option=orderAbc'">제목순</button>
+	<button style="cursor:pointer;" onclick="location.href='/suggest/board?option=orderId'">아이디순</button>
+	<button style="cursor:pointer;" onclick="location.href='/suggest/board?option=orderRegDate'">등록일순</button>
+</div>
+
+</body>
+</html>

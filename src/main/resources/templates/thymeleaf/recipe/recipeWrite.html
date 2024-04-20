@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>RECIPE WRITE</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<br>
+<button>
+<div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+
+<!-- 레시피 글쓰기 -->
+<h2 style="color:blue;">게시판 글쓰기</h2>
+<form action="/recipe/insert">
+
+<!-- 게시판 등록 테이블 -->
+<table border="1" bgcolor="#F0F8FF" style="font-weight:bold;">
+	<tr>
+		<td style="text-align:center;">제목</td>
+		<td><input type="text" name="myTitle"></td>
+	</tr>
+	<tr>
+		<td style="text-align:center;">작성자</td>
+		<td th:text="${myId}"></td>
+	</tr>
+	<tr>
+		<td style="text-align:center;">내용</td>
+		<td><textarea rows="5" cols="30" name="myContents"></textarea></td>
+	</tr>	
+</table><br>
+
+<!-- 저장하기 -->
+<input type="submit" value="목록으로" name="list" style="cursor:pointer;">
+<input type="submit" value="저장" style="cursor:pointer;">
+</form>
+
+<!-- 목록으로 -->
+
+</body>
+</html>

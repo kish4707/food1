@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>RECIPE MAIN</title>
+</head>
+
+<body>
+
+<!-- 제목:푸드1번지 -->
+<button>
+	<div style="text-align:left;
+		font-size:3.3em; font-weight:bold; color:#FF6633; cursor:pointer;"
+		onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br>
+
+<!-- 부제:자유게시판 -->
+<div style="text-align:right;">
+	<button style="cursor:pointer;" onclick="location.href='/recipe/board'">자유게시판</button>
+</div><br>
+
+<!-- 부제:RECIPE HOME -->
+<div style="text-align:left; 
+	width:1600px; height:40px; background-color:#003366;
+	font-size:1.5em; font-weight:bold; color:white;">RECIPE HOME
+</div><br><br><br>
+
+<!-- 부제:현대인을 위한 레시피 -->
+<div style="text-align:center;
+	font-size:3em; font-weight:bold; color:blue;">현대인을 위한 레시피
+</div><br><br><br><br>
+<div style="text-align:left;
+	width:1600px; height:14px; background-color:#003366;">
+</div><br>
+  
+<!-- 검색창 -->
+<form action="/recipe/search">
+	<input type="text" name="search" placeholder=" 레시피" 
+		style="text-align:left;
+		font-size:1.4em; font-weight:bold; background-color:white;">
+	</input>
+	<input type="submit" value="검색"
+		style="text-align:left;  
+		cursor:pointer; font-size:1.2em; font-weight:bold;">
+	</input>
+</form>
+ 
+<!-- 메뉴 -->
+<table align="center" style="font-weight:bold;">
+<script th:inline="javascript">
+var recipeName = [[${recipeName}]];
+for (i=0; i<recipeName.length; i++) {
+	
+	// 테이블 5열 시작
+	if (i%5==0) {
+		document.write('<tr>');
+	}
+	
+	// 전송경로, 레시피이미지, 레시피명
+	document.write('<td align="center">');
+		var recipeImage = '<video src="/pic/recipe/recipe'+i+'.mp4" width="300px" height="260px" controls></video>';
+		document.write('<a href="/recipe/choose?myRecipeNum='+i+'">'+recipeImage+'</a>');
+		document.write(recipeName[i]);
+	document.write('</td>');
+	
+	// 테이블 5열 끝
+	if(i%5==4) {
+		document.write('</tr>');
+	}
+}
+</script>
+</table>
+
+</body>
+</html>

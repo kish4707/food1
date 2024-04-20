@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<!-- 샵 축산 뷰 -->
+<title>SHOP LIST</title>
+</head>
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<button><div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div></button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button>
+
+<div style="text-align:center; font-size:3.3em; 
+	font-weight:bold; color:#6600FF;">[[${korFoodName}]]</div><br><br>
+	
+<!-- 축산 카테고리표 -->	
+<table border="1" align="center" style="font-weight:bold;">
+<script th:inline="javascript">	
+
+// 영문식품명, 식품명배열, 식품명배열크기, 식품값배열, 식품이미지경로, 전송경로
+var engFoodName = [[${engFoodName}]];
+var foodKey = [[${foodKey}]];
+var foodKeySize = [[${foodKey.size()}]];
+var foodValue = [[${foodValue}]];
+var foodPath = "/pic/shop/sub/"+engFoodName+"/"+engFoodName;
+var sendPath = "/shop/display";
+
+for(i=0; i<foodKeySize; i++) {
+	
+	// 테이블 3열 시작
+	if(i%3==0) {
+		document.write('<tr>');
+	}
+	document.write('<td align="center" width="350">');
+	
+	// 식품이미지, 식품명, 식품값
+	var foodImage = foodPath+i+".png";
+	var foodName = foodKey[i];
+	var foodPrice = foodValue[i];
+	
+	// 전송정보(전송경로, 식품이미지, 식품명, 식품값)
+	document.write('<a href="'+sendPath+'?foodImage='+foodImage+'&foodName='+foodName+'&foodPrice='+foodPrice+'"><img src="'+foodImage+'"></a><br>');
+	document.write(foodName+'<br>');
+	document.write('￦'+foodPrice);
+	document.write('</td>');	
+	
+	// 테이블 3열 끝
+	if(i%3==2) {
+		document.write('</tr>');
+	}
+}
+</script>
+</table>
+
+</body>
+</html>

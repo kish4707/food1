@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP GLANCE</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<button>
+<div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<h2 style="color:blue;">검색된 식품</h2>   
+<table border="1">
+
+<tr bgcolor="#CCFFCC" style="font-weight:bold;">
+	<td align="center">식품이미지</td>
+	<td align="center" width="350px">식품이름</td>
+	<td align="center" width="70px">식품가격</td>
+</tr>
+
+<tr th:each="index:${#numbers.sequence(0, hugFoodImage.size()-1)}">
+
+	<td>
+		<a th:href="@{/shop/searched(myFoodImage=${hugFoodImage[index]}, myFoodName=${hugFoodName[index]}, myFoodPrice=${hugFoodPrice[index]})}">
+		<img th:src="${hugFoodImage[index]}"></a>
+	</td>
+	<td th:text="${hugFoodName[index]}"></td>
+	<td th:text="${hugFoodPrice[index]}" align="right"></td>
+</tr>
+</table>   
+   
+</body>
+</html>

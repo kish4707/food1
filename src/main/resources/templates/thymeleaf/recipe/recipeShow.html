@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>RECIPE SHOW</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<button>
+	<div style="text-align:left;
+		font-size:3.3em; font-weight:bold; color:#FF6633; cursor:pointer;"
+		onclick="location.href='/food1'">푸드 1번지
+	</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<!-- 레시피 표 -->
+<h2 style="color:blue;">레시피 더보기</h2>
+
+<style>
+	table {
+	}
+	td {
+	text-align : left; 
+	vertical-align : top;
+	border : 1px solid;
+	}
+</style>
+
+<table border="2">
+
+<tr bgcolor="#CCFFCC" style="font-weight:bold;">
+	<td style="text-align:center;">[[${myRecipeName}]]</td>
+	<td style="text-align:center; width:250px">재료</td>
+	<td style="text-align:center; width:500px">조리법</td>
+</tr>
+
+<tr bgcolor="#F0F8FF">
+	<script th:inline="javascript">
+	var myRecipeVideo = [[${myRecipeVideo}]];
+	var myRecipeVideo = '<video src="'+myRecipeVideo+'" width="300px" height="260px" controls></video>';
+	
+	<!-- 동영상 컨텐츠 -->
+	document.write('<td>');
+		document.write(myRecipeVideo);
+	document.write('</td>');
+	
+	<!-- 재료 컨텐츠 -->
+	document.write('<td>');
+		document.write([[${myRecipeStuff}]]);
+	document.write('</td>');
+	
+	<!-- 조리법 컨텐츠 -->
+	document.write('<td>');
+		document.write([[${myRecipeCook}]]);
+	document.write('</td>');
+	</script>
+</tr>
+
+</table><br><br><br><br>
+
+</body>
+</html>

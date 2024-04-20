@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SUGGEST BOARD</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목 -->
+<button>
+<div style="text-align:left; font-size:3.3em; 
+	font-weight:bold; color:#FF6633; cursor:pointer;"
+	onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<h2 style="color:blue;">추천 보드 ([[${optionName}]])</h2>
+<table border="1">
+    
+    <!-- 추천보드 부제 -->
+    <thead>
+        <tr bgcolor="#CCFFCC">
+            <th>번호</th>
+            <th>아이디</th>
+            <th>비번</th>
+            <th>제목</th>
+            <th width="300px">내용</th>
+            <th width="100px">작성일</th>
+            <th>조회수</th>
+        </tr>
+    </thead>
+    
+    <!-- 추천보드 부제 내용(번호, 아이디, 비번, 제목, 내용, 작성일, 조회수)-->
+    <tbody>
+        <tr th:each="board : ${boardList}" bgcolor="#F0F8FF">
+            <td th:text="${board.num}" align="right"></td>
+            <td th:text="${board.id}" align="right"></td>
+            <td>****</td>
+            <td th:text="${board.title}" align="center"></td>
+            <td th:text="${board.contents}"></td>
+            <td th:text="${board.regDate}" align="center"></td>
+            <td th:text="${board.hit}" align="right"></td>
+        </tr>
+    </tbody>
+    
+</table>
+</body>
+
+</html>

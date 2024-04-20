@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SHOP MAIN</title>
+</head>
+
+<!-- 배경색 지정 -->
+<body style="background-color:#F0F8FF">
+
+<!-- 제목:푸드1번지 -->
+<button>
+	<div style="text-align:left; font-size:3.3em; font-weight:bold; color:#FF6633; cursor:pointer;"
+		onclick="location.href='/food1'">푸드 1번지</div>
+</button>
+<button style="cursor:pointer;" onclick="history.back()">뒤로</button><br><br>
+
+<!-- 부제:식품 -->
+<div style="text-align:center; font-size:3.3em; font-weight:bold; color:#6600FF;">식 품</div><br>
+
+<!-- 검색창 -->
+<form action="/shop/search" style="text-align:center;">
+	<input type="text" name="search" placeholder=" 식품명" 
+		style="font-size:1.4em; font-weight:bold; background-color:white;">
+	<input type="submit" value="검색"
+		style="cursor:pointer; font-size:1.2em; font-weight:bold;">
+</form><br>
+
+<!-- 식품 카테고리 -->
+<table border="1" align="center" style="font-weight:bold;">
+<script th:inline="javascript">
+
+// 국문식품이름길이, 국문식품이름, 영문식품이름, 이미지경로, 전송경로
+var korFoodNameLength = [[${korFoodName.length}]];
+var korFoodName = [[${korFoodName}]];
+var engFoodName = [[${engFoodName}]];
+var showPath = "/pic/shop/main/";
+var sendPath = "/shop/list";
+
+for(i=0; i<korFoodNameLength; i++) {
+	
+	// 테이블 4열 시작
+	if(i%4==0) {
+		document.write('<tr>');
+	}
+	document.write('<td align="center" width="250">');
+	
+	// 국문식품이름, 영문식품이름, 식품이미지 
+	var foodImage = showPath+engFoodName[i]+".png";
+	
+	// 전송정보(국문식품이름, 영문식품이름)
+	document.write('<a href="'+sendPath+'?korFoodName='+korFoodName[i]+'&engFoodName='+engFoodName[i]+'"><img src="'+foodImage+'"></a><br>');
+	document.write(korFoodName[i]);
+	document.write('</td>');
+	
+	// 테이블 4열 끝
+	if(i%4==3) {
+		document.write('</tr>');
+	}
+}
+
+</script>
+</table>
+
+</body>
+</html>
